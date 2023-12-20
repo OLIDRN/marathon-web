@@ -35,7 +35,7 @@ class HistoireController extends Controller
         if (!$user) {
             abort(404, 'User not found');
         }
-        return view('user.dashboard', ['user' => $user]);
+        return view('user.dashboard.blade.php', ['user' => $user]);
     }
 
     public function create()
@@ -72,39 +72,73 @@ class HistoireController extends Controller
 
     public function store(Request $request)
     {
-        try {
-            $request->validate([
-                'titre' => 'required',
-                'pitch' => 'required',
-                'genre_id' => 'required',
-                'photo' => 'required|image',
-            ]);
+        $request->validate([
+            'titre' => 'required',
+            'pitch' => 'required',
+            'genre_id' => 'required',
+            'photo' => 'required|image',
+        ]);
 
-            $user = auth()->user();
-            if (!$user) {
-                // No user is authenticated, redirect to login page
-                return redirect()->route('login');
-            }
-
-            $histoire = new Histoire();
-            $histoire->titre = $request->titre;
-            $histoire->pitch = $request->pitch;
-            $histoire->user_id = $user->id;
-            $histoire->genre_id = $request->genre_id;
-            $histoire->active = true;
-
-            if ($request->hasFile('photo')) {
-                $photoPath = $request->file('photo')->store('photos', 'public');
-                $histoire->photo = $photoPath;
-            }
-
-            $histoire->save();
-
-            return redirect()->route('histoire.show', ['id' => $histoire->id]);
-        } catch (\Exception $e) {
-            \Log::error('Error creating story: ' . $e->getMessage());
-
-            return back()->with('error', 'There was an error creating the story.');
+        $user = auth()->user();
+        if (!$user) {
+            return redirect()->route('login');
         }
+
+        $histoire = new Histoire();
+        $histoire->titre = $request->titre;
+        $histoire->pitch = $request->pitch;
+        $histoire->user_id = $user->id;
+        $histoire->genre_id = $request->genre_id;
+        $histoire->active = true;
+
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('photos', 'public');
+            $histoire->photo = $photoPath;
+        }
+
+        $histoire->save();
+
+        return redirect()->route('histoire.show', ['id' => $histoire->id]);
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $genres = Genre::all();
+        $histoire = Histoire::find($id);
+        return view('histoire.edit', ['histoire' => $histoire, 'genres' => $genres]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $histoire = Histoire::find($id);
+        $histoire->titre = $request->titre;
+        $histoire->pitch = $request->pitch;
+        $histoire->genre_id = $request->genre_id;
+        $histoire->active = true;
+
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('photos', 'public');
+            $histoire->photo = $photoPath;
+        }
+
+        $histoire->save();
+        return redirect()->route('histoire.show', ['id' => $histoire->id]);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $histoire = Histoire::find($id);
+        $histoire->delete();
+        return redirect()->route('histoire.index');
+    }
+
+    public function dashboardUser(Request $request)
+    {
+        $user = auth()->user();
+        $histoires = Histoire::where('user_id', $user->id)->get();
+        if (!$user) {
+            return redirect()->route('login');
+        }
+        return view('dashboard', ['user' => $user, 'histoires' => $histoires]);
     }
 }

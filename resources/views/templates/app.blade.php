@@ -14,7 +14,7 @@
             <a href="{{route('index')}}" class="hover:text-zinc-300">Accueil</a>
             <a href="{{route('histoire.index')}}" class="hover:text-zinc-300">Histoires</a>
         @auth
-                <a href="#" class="hover:text-zinc-300">{{Auth::user()->name}}</a>
+                <a href="{{ route('dashboard') }}" class="hover:text-zinc-300">{{Auth::user()->name}}</a>
                 <a href="{{route("logout")}}" class="hover:text-zinc-300"
                 onclick="document.getElementById('logout').submit(); return false;">Logout</a>
                 <form id="logout" action="{{route("logout")}}" method="post">

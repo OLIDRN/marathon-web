@@ -7,7 +7,7 @@
         <h2 class="text-xl text-justify max-w-sm">{{ $histoire->pitch }}</h2>
         <p class="text-lg">Genre : {{ $histoire->genre->label }}</p>
         <p>Auteur :
-            <a class="underline" href="{{ route('user.dashboard', $histoire->user->name) }}">
+            <a class="underline" href="{{ route('user.dashboard.blade.php', $histoire->user->name) }}">
                 {{ $histoire->user->name }}
             </a></p>
 
@@ -17,6 +17,17 @@
             <img src="{{ Vite::asset('/public' . $histoire->photo) }}" alt="image de l'histoire">
         @else
             <img src="{{ Vite::asset('/public/storage/' . $histoire->photo) }}" alt="image de lqdqd'histoire">
+        @endif
+
+        @if(Auth::check())
+            @if(Auth::user()->id == $histoire->user_id)
+                <a href="{{ route('histoire.edit', $histoire->id) }}">Modifier</a>
+                <form method="POST" action="{{ route('histoire.destroy', $histoire->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Supprimer</button>
+                </form>
+            @endif
         @endif
 
         <a href="{{route('histoire.starthistory', $histoire->id)}}"><p>Commencer la lecture</p></a>
