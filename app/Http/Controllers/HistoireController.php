@@ -21,7 +21,7 @@ class HistoireController extends Controller
 
     public function dashboard($username)
     {
-        $user = User::where('name', $username)->with('mesHistoires')->first();
+        $user = User::where('name', $username)->with(['mesHistoires'])->first();
         if (!$user) {
             abort(404, 'User not found');
         }
@@ -39,11 +39,10 @@ class HistoireController extends Controller
             'titre' => 'required',
             'pitch' => 'required',
             'photo' => 'required',
-            'genre_id' => 'required|integer', // Add validation for genre_id
+            'genre_id' => 'required|integer',
         ]);
 
         if (!auth()->check()) {
-            // Redirect to login page or handle this situation as needed
             return redirect()->route('login');
         }
 
