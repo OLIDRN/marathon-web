@@ -8,4 +8,4 @@
 @else
     <img src="{{ Vite::asset('/public' . $histoire->photo) }}" alt="image de l'histoire">
 @endif
-
+<a href="{{ route('histoire.starthistory', ['id' => $histoire->id]) }}"><p> Commencer l'histoire</p></a>
