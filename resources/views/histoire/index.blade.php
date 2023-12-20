@@ -1,11 +1,20 @@
 @extends("templates.app")
 
 @section('content')
-
     <div class="flex flex-col flex-wrap justify-center gap-10 p-6 ">
         <div class="flex">
             <h1 class="text-3xl font-bold text-center flex m-auto">Histoires</h1>
         </div>
+        <form method="GET" action="{{ route('histoire')  }}">
+            @csrf
+            @method('GET')
+            <select id="cat" name="cat" onchange="this.form.submit()">
+                <option value="All" {{ $cat == 'All' ? 'selected' : '' }}>Toutes les catégories</option>
+                @foreach($genres as $genre)
+                    <option value="{{ $genre->id }}" {{ $cat == $genre ? 'selected' : '' }}>{{ $genre->label }}</option>
+                @endforeach
+            </select>
+        </form>
         @foreach($histoire as $story)
             <div class="flex flex-col justify-center max-w-md gap-4 p-6 rounded-lg border-2 border-amber-400 shadow-2xl shadow-amber-700">
                 <h3 class="text-xl font-bold">{{ $story->titre }}</h3>
