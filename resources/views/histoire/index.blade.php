@@ -19,10 +19,12 @@
             @if($story->active === 1)
                 <div class="flex flex-col justify-center max-w-md gap-4 p-6 rounded-lg border-2 border-amber-400 shadow-2xl shadow-amber-700">
                     <h3 class="text-xl font-bold">{{ $story->titre }}</h3>
-                    @if($story->id == 2 || $story->id == 100)
-                        <img class="aspect-square object-cover w-full" src="{{ $story->photo }}" alt="Image description">
+                    @if($story->id == 2)
+                        <img src="{{ $story->photo }}" alt="Image description">
+                    @elseif($story->id == 100)
+                        <img src="{{ Vite::asset('/public' . $story->photo) }}" alt="image de l'histoire">
                     @else
-                        <img class="aspect-square object-cover w-full" src="{{ Vite::asset('/public' . $story->photo) }}" alt="image de l'histoire">
+                        <img src="{{ Vite::asset('/public/storage/' . $story->photo) }}" alt="image de lqdqd'histoire">
                     @endif
                     <h4 class="text-sm">Auteur :
                         <a class="underline text-stone-400 italic" href="{{ route('user.dashboard', $story->user->name) }}">
@@ -42,4 +44,7 @@
             @endif
         @endforeach
     </div>
+    <button class="fixed bottom-0 right-0 m-4 p-2 bg-stone-700 rounded-full hover:bg-stone-600" onclick="window.location.href='{{ route('histoire.create') }}'">
+        Créer une histoire
+    </button>
 @endsection

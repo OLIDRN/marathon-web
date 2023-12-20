@@ -28,13 +28,13 @@ Route::get('/test-vite', function () {
 })->name("test-vite");
 
 Route::get('equipe', [EquipeController::class, 'index'])->name("equipe");
-Route::get('histoires', [HistoireController::class, 'index'])->name("histoire");
+
 Route::get('histoire/{id}', [HistoireController::class, 'show'])->name("histoire.show");
 Route::get('histoires/create', [HistoireController::class, 'create'])->name("histoire.create");
 Route::post('histoires', [HistoireController::class, 'store'])->name("histoire.store");
 Route::get('histoires/{id}/starthistory', [HistoireController::class, 'starthistory'])->name("histoire.starthistory");
-
 Route::get('histoires/{username}/profile', [HistoireController::class, 'dashboard'])->name("user.dashboard");
 Route::post('histoires', [HistoireController::class, 'index'])->name("histoire.un");
-
 Route::post('histoires/{id}/avis', [HistoireController::class, 'addAvis'])->name("histoire.avis");
+Route::get('histoires', [HistoireController::class, 'index'])->name("histoire.index");
+Route::post('histoires/store', [HistoireController::class, 'store'])->name("histoire.store");
