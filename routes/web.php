@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\EquipeController;
+use \App\Http\Controllers\HistoireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,5 @@ Route::get('/test-vite', function () {
 })->name("test-vite");
 
 Route::get('equipe', [EquipeController::class, 'index'])->name("equipe");
+Route::get('histoires', [HistoireController::class, 'index'])->name("histoire");
+Route::get('histoire/{id}', [HistoireController::class, 'show'])->name("histoire.show");
