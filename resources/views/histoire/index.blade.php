@@ -5,14 +5,13 @@
         <div class="flex">
             <h1 class="text-3xl font-bold text-center flex m-auto">Histoires</h1>
         </div>
-        <form method="GET" action="{{ route('histoire')  }}">
+        <form method="POST" action="{{ route('histoire.un')  }}">
             @csrf
-            @method('GET')
+            @method('POST')
             <select id="cat" name="cat" onchange="this.form.submit()">
-                <option value="0">Tous</option>
-                <option value="All" {{ $cat == 'All' ? 'selected' : '' }}>Tout les genres</option>
+                <option value="" {{ $cat == null ? 'selected' : '' }}>Tout les genres</option>
                 @foreach($genres as $genre)
-                    <option value="{{ $genre->id }}" {{ $cat == $genre ? 'selected' : '' }}>{{ $genre->label }}</option>
+                    <option value="{{ $genre->id }}" {{ $cat == $genre->id ? 'selected' : '' }}>{{ $genre->label }}</option>
                 @endforeach
             </select>
         </form>
