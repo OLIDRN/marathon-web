@@ -6,12 +6,26 @@ use App\Models\Avis;
 use App\Models\Histoire;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Genre;
 
 class HistoireController extends Controller
 {
-    public function index(){
-        $histoire = Histoire::all();
-        return view('histoire.index', ['histoire' => $histoire]);
+    public function index(Request $request){
+        $cat = $request->input('cat', 'All');
+
+        if (!isset($cat)) {
+            $histoire = Histoire::all();
+        } else {
+            if ($cat == 'All') {
+                $histoire = Histoire::all();
+            } else {
+                $histoire = Histoire::where('genre_id', $cat)->get();
+            }
+        }
+
+        $genres = Genre::all();
+
+        return view('histoire.index', ['histoire' => $histoire, 'cat' => $cat, 'genres' => $genres]);
     }
 
     public function show($id){
