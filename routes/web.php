@@ -36,4 +36,4 @@ Route::get('histoires/{id}/starthistory', [HistoireController::class, 'starthist
 
 Route::get('histoires/{username}/profile', [HistoireController::class, 'dashboard'])->name("user.dashboard");
 
-Route::get('histoires/{username}/profile', [HistoireController::class, 'dashboard'])->name("user.dashboard");
+Route::post('histoires/{id}/avis', [HistoireController::class, 'addAvis'])->name("histoire.avis");
