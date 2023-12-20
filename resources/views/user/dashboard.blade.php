@@ -1,9 +1,19 @@
-<h1>{{ $user->name }}</h1>
-<h2>Nombre d'histoire : {{ $user->mesHistoires->count() }}</h2>
-@foreach($user->mesHistoires as $histoire)
-    <div>
-        <a href="{{ route('histoire.show', $histoire->id) }}">
-            <h3>Titre : {{ $histoire->titre }}</h3>
-        </a>
+@extends("templates.app")
+
+@section('content')
+
+
+    <div class="flex flex-col justify-center gap-2 p-6 max-w-2xl border-2 border-amber-400 shadow-2xl shadow-amber-600 rounded-lg">
+        <h1 class="text-3xl">{{ $user->name }}</h1>
+        <hr class="border-2 border-amber-400">
+        <h2>Nombre d'histoire(s) : {{ $user->mesHistoires->count() }}</h2>
+        @foreach($user->mesHistoires as $histoire)
+            <div>
+                <a class="underline" href="{{ route('histoire.show', $histoire->id) }}">
+                    {{ $histoire->titre }}
+                </a>
+            </div>
+        @endforeach
     </div>
-@endforeach
+
+@endsection
