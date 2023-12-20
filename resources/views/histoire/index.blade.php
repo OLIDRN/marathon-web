@@ -27,12 +27,12 @@
                         <img src="{{ Vite::asset('/public/storage/' . $story->photo) }}" alt="image de lqdqd'histoire">
                     @endif
                     <h4 class="text-sm">Auteur :
-                        <a class="underline text-stone-400 italic" href="{{ route('user.dashboard', $story->user->name) }}">
+                        <a class="underline text-stone-400 italic" href="{{ route('user.dashboard.blade.php', $story->user->name) }}">
                             {{ $story->user->name }}
                         </a>
                     </h4>
                     <h4 class="text-sm">Genre :
-                        <a class="underline text-stone-400 italic" href="{{ route('user.dashboard', $story->user->name) }}">
+                        <a class="underline text-stone-400 italic" href="{{ route('user.dashboard.blade.php', $story->user->name) }}">
                             {{ $story->genre->label }}
                         </a>
                     </h4>

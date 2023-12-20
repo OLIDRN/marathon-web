@@ -33,8 +33,12 @@ Route::get('histoire/{id}', [HistoireController::class, 'show'])->name("histoire
 Route::get('histoires/create', [HistoireController::class, 'create'])->name("histoire.create");
 Route::post('histoires', [HistoireController::class, 'store'])->name("histoire.store");
 Route::get('histoires/{id}/starthistory', [HistoireController::class, 'starthistory'])->name("histoire.starthistory");
-Route::get('histoires/{username}/profile', [HistoireController::class, 'dashboard'])->name("user.dashboard");
+Route::get('histoires/{username}/profile', [HistoireController::class, 'dashboard'])->name("user.dashboard.blade.php");
 Route::post('histoires', [HistoireController::class, 'index'])->name("histoire.un");
 Route::post('histoires/{id}/avis', [HistoireController::class, 'addAvis'])->name("histoire.avis");
 Route::get('histoires', [HistoireController::class, 'index'])->name("histoire.index");
 Route::post('histoires/store', [HistoireController::class, 'store'])->name("histoire.store");
+Route::get('histoires/{id}/edit', [HistoireController::class, 'edit'])->name("histoire.edit");
+Route::put('histoires/{id}', [HistoireController::class, 'update'])->name("histoire.update");
+Route::delete('histoires/{id}', [HistoireController::class, 'destroy'])->name("histoire.destroy");
+Route::get('dashboard', [HistoireController::class, 'dashboardUser'])->name("dashboard");
