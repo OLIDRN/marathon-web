@@ -35,4 +35,4 @@ Route::post('histoires', [HistoireController::class, 'store'])->name("histoire.s
 
 Route::get('histoires/{username}/profile', [HistoireController::class, 'dashboard'])->name("user.dashboard");
 
-Route::get('histoires/{username}/profile', [HistoireController::class, 'dashboard'])->name("user.dashboard");
+Route::post('histoires/{id}/avis', [HistoireController::class, 'addAvis'])->name("histoire.avis");
