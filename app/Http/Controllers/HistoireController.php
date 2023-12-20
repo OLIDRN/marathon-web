@@ -11,16 +11,12 @@ use App\Models\Genre;
 class HistoireController extends Controller
 {
     public function index(Request $request){
-        $cat = $request->input('cat', 'All');
+        $cat = $request->input('cat', null);
+        if (isset($cat)) {
+            $histoire = Histoire::where('genre_id', $cat)->get();
 
-        if (!isset($cat)) {
-            $histoire = Histoire::all();
         } else {
-            if ($cat == 'All') {
-                $histoire = Histoire::all();
-            } else {
-                $histoire = Histoire::where('genre_id', $cat)->get();
-            }
+            $histoire = Histoire::all();
         }
 
         $genres = Genre::all();
