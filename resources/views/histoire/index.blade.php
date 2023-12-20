@@ -33,4 +33,9 @@
     </div>
 
 
-@endsection
+@foreach($histoire as $story)
+    <h3>Titre : {{ $story->titre }}</h3>
+    <h4>Resume : {{ $story->pitch }}</h4>
+    <a href="{{ route('histoire.show', $story->id) }}">Lire la suite</a>
+    <p>Genre : {{ $story->genre->label }}</p>
+@endforeach

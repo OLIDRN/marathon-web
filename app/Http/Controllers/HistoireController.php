@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avis;
 use App\Models\Histoire;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -57,9 +58,23 @@ class HistoireController extends Controller
         return redirect()->route('index');
     }
 
-    public function starthistory($id)
+    public function addAvis(Request $request, $id)
     {
-        $histoire = Histoire::find($id);
-        return view('histoire.starthistory', ['histoire' => $histoire]);
+        $user = auth()->user();
+
+        $request->validate([
+            'contenu' => 'required',
+        ]);
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $histoire = new Avis();
+        $histoire->contenu = $request->contenu;
+        $histoire->user_id = auth()->user()->id;
+        $histoire->histoire_id = $id;
+        $histoire->save();
+        return redirect()->route('histoire.show', ['id' => $id]);
     }
 }
