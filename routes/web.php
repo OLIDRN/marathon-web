@@ -30,3 +30,5 @@ Route::get('/test-vite', function () {
 Route::get('equipe', [EquipeController::class, 'index'])->name("equipe");
 Route::get('histoires', [HistoireController::class, 'index'])->name("histoire");
 Route::get('histoire/{id}', [HistoireController::class, 'show'])->name("histoire.show");
+
+Route::get('histoires/{username}/profile', [HistoireController::class, 'dashboard'])->name("user.dashboard");
