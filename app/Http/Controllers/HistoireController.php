@@ -40,31 +40,8 @@ class HistoireController extends Controller
 
     public function create()
     {
-        return view('histoire.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'titre' => 'required',
-            'pitch' => 'required',
-            'photo' => 'required',
-            'genre_id' => 'required|integer',
-        ]);
-
-        if (!auth()->check()) {
-            return redirect()->route('login');
-        }
-
-        $histoire = new Histoire();
-        $histoire->titre = $request->titre;
-        $histoire->pitch = $request->pitch;
-        $histoire->photo = $request->photo;
-        $histoire->active = false;
-        $histoire->user_id = auth()->user()->id;
-        $histoire->genre_id = $request->genre_id;
-        $histoire->save();
-        return redirect()->route('index');
+        $genres = Genre::all();
+        return view('histoire.create', ['genres' => $genres]);
     }
 
     public function addAvis(Request $request, $id)
@@ -91,5 +68,43 @@ class HistoireController extends Controller
     {
         $histoire = Histoire::find($id);
         return view('histoire.starthistory', ['histoire' => $histoire]);
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $request->validate([
+                'titre' => 'required',
+                'pitch' => 'required',
+                'genre_id' => 'required',
+                'photo' => 'required|image',
+            ]);
+
+            $user = auth()->user();
+            if (!$user) {
+                // No user is authenticated, redirect to login page
+                return redirect()->route('login');
+            }
+
+            $histoire = new Histoire();
+            $histoire->titre = $request->titre;
+            $histoire->pitch = $request->pitch;
+            $histoire->user_id = $user->id;
+            $histoire->genre_id = $request->genre_id;
+            $histoire->active = true;
+
+            if ($request->hasFile('photo')) {
+                $photoPath = $request->file('photo')->store('photos', 'public');
+                $histoire->photo = $photoPath;
+            }
+
+            $histoire->save();
+
+            return redirect()->route('histoire.show', ['id' => $histoire->id]);
+        } catch (\Exception $e) {
+            \Log::error('Error creating story: ' . $e->getMessage());
+
+            return back()->with('error', 'There was an error creating the story.');
+        }
     }
 }

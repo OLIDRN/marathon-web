@@ -12,8 +12,7 @@
             <h2>Gold Decision</h2>
         <nav class="flex gap-4">
             <a href="{{route('index')}}" class="hover:text-zinc-300">Accueil</a>
-            <a href="{{route('histoire')}}" class="hover:text-zinc-300">Histoires</a>
-
+            <a href="{{route('histoire.index')}}" class="hover:text-zinc-300">Histoires</a>
         @auth
                 <a href="#" class="hover:text-zinc-300">{{Auth::user()->name}}</a>
                 <a href="{{route("logout")}}" class="hover:text-zinc-300"

@@ -1,31 +1,29 @@
-
-<title>Créer une histoire</title>
-
-<div class="create-scene">
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+<form method="POST" action="{{ route('histoire.store') }}" enctype="multipart/form-data">
+    @csrf
+    @method('POST')
+    <div class="flex flex-col justify-center gap-10 p-6 max-w-2xl">
+        <a class="before:content-['←'] underline" class="text-2xl underline" href="{{ route('histoire.index') }}">Retour</a>
+        <h1 class="text-3xl underline">Créer une histoire</h1>
+        <div class="flex flex-col gap-4">
+            <label for="titre">Titre :</label>
+            <input type="text" id="titre" name="titre" required>
         </div>
-@endif
-
-        <form method="POST" action="{{ route('histoire.store') }}" onsubmit="return confirm('Etes vous sur de confirmer la création ?')">
-            @csrf
-            <label for="titre">Titre de l'histoire:</label>
-            <input type="text" name="titre" value="{{ old('titre') }}" required>
-
-            <label for="pitch">Pitch de l'histoire:</label>
-            <textarea name="pitch" required>{{ old('pitch') }}</textarea>
-
-            <label for="photo">Photo de l'histoire</label>
-            <input type="file" name="photo" value="{{ old('photo') }}" required>
-
-            <label for="genre_id">Genre:</label>
-            <input type="number" name="genre_id" value="{{ old('genre_id') }}" required> <!-- Add this line -->
-
-            <button type="submit">Créer l'histoire</button>
-        </form>
-</div>
+        <div class="flex flex-col gap-4">
+            <label for="pitch">Pitch :</label>
+            <textarea id="pitch" name="pitch" required></textarea>
+        </div>
+        <div class="flex flex-col gap-4">
+            <label for="genre">Genre :</label>
+            <select id="genre" name="genre_id" required>
+                @foreach($genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->label }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="flex flex-col gap-4">
+            <label for="photo">Photo :</label>
+            <input type="file" id="photo" name="photo" required>
+        </div>
+        <button type="submit">Soumettre</button>
+    </div>
+</form>

@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'titre' => 'z1 ou la vie d\'un demi-octet',
             'pitch' => "z1 n'a pas une vie très compliquée. Quelque soit la question, la réponse se limite à 0 ou 1. 
              En même temps, cela lui permet au mois de représenter des nombres en mode binaire. C'est déjà cela !",
-            'photo'  => "/images/bit-1.webp",
+            'photo'  => "/photos/bit-1.webp",
             'user_id' => 1,
             'active'=>1,
             'genre_id'=>1
@@ -316,7 +316,7 @@ organique et robotique. En route...",
             DB::table('histoires')->insert([
                 'titre' => "l'histoire vide $i",
                 'pitch' => "Ben il n'y a rien on vous dit",
-                'photo'  => "/images/bit-1.webp",
+                'photo'  => "/photos/bit-1.webp",
                 'user_id' => rand(1, $nb_users),
                 'active'=>1,
                 'genre_id'=>rand(1,5)
