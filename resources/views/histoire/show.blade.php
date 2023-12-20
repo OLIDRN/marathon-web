@@ -3,6 +3,7 @@
 @section('content')
 
     <div class="flex flex-col justify-center gap-10 p-6 max-w-2xl">
+        <a class="before:content-['←'] underline" href="{{ route('histoire') }}" class="text-2xl underline">Retour</a>
         <h1 class="text-3xl underline">{{ $histoire->titre }}</h1>
         <h2 class="text-xl text-justify max-w-sm">{{ $histoire->pitch }}</h2>
         <p class="text-lg">Genre : {{ $histoire->genre->label }}</p>
