@@ -1,7 +1,6 @@
 @extends("templates.app")
 
 @section('content')
-
     <div class="flex flex-col justify-center gap-10 p-6 max-w-2xl">
         <a class="before:content-['←'] underline" href="{{ route('histoire') }}" class="text-2xl underline">Retour</a>
         <h1 class="text-3xl underline">{{ $histoire->titre }}</h1>
@@ -17,6 +16,9 @@
         @else
             <img src="{{ Vite::asset('/public' . $histoire->photo) }}" alt="image de l'histoire">
         @endif
+
+        <a href="{{route('histoire.starthistory', $histoire->id)}}"><p>Commencer la lecture</p></a>
+
         @foreach($histoire->avis as $avis)
             <div>
                 <p>Auteur : {{ $avis->user->name }}</p>

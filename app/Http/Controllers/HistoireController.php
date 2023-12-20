@@ -86,4 +86,10 @@ class HistoireController extends Controller
         $histoire->save();
         return redirect()->route('histoire.show', ['id' => $id]);
     }
+
+    public function starthistory(Request $request, $id)
+    {
+        $histoire = Histoire::find($id);
+        return view('histoire.starthistory', ['histoire' => $histoire]);
+    }
 }
