@@ -9,7 +9,8 @@
             @csrf
             @method('GET')
             <select id="cat" name="cat" onchange="this.form.submit()">
-                <option value="All" {{ $cat == 'All' ? 'selected' : '' }}>Toutes les catégories</option>
+                <option value="0">Tous</option>
+                <option value="All" {{ $cat == 'All' ? 'selected' : '' }}>Tout les genres</option>
                 @foreach($genres as $genre)
                     <option value="{{ $genre->id }}" {{ $cat == $genre ? 'selected' : '' }}>{{ $genre->label }}</option>
                 @endforeach
