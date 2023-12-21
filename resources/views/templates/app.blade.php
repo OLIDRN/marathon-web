@@ -8,8 +8,8 @@
         @vite(["resources/css/normalize.css", 'resources/css/app.css', 'resources/js/app.js'])
     </head>
         <body class="bg-white text-noir">
-        <header class="flex justify-around p-3 bg-stone-800 text-white border-b-2 border-amber-400">
-            <h2>Gold Decision</h2>
+        <header class="flex items-center justify-around p-3 bg-stone-800 text-white border-b-2 border-amber-400">
+            <img src="{{Vite::asset('/resources/images/logo_01.svg')}}" alt="Logo du site" class="w-[10rem]">
         <nav class="flex gap-4">
             <a href="{{route('index')}}" class="hover:text-zinc-300">Accueil</a>
             <a href="{{route('histoire.index')}}" class="hover:text-zinc-300">Histoires</a>
