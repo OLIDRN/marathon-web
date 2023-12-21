@@ -16,7 +16,7 @@
         @elseif($histoire->id == 100)
             <img src="{{ Vite::asset('/public' . $histoire->photo) }}" alt="image de l'histoire">
         @else
-            <img src="{{ Vite::asset('/public/storage/' . $histoire->photo) }}" alt="image de lqdqd'histoire">
+            <img src="{{ Storage::url($histoire->photo) }}" alt="image de lqdqd'histoire">
         @endif
 
         @if(Auth::check())
