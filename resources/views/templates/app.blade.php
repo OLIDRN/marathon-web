@@ -8,7 +8,7 @@
         @vite(["resources/css/normalize.css", 'resources/css/app.css', 'resources/js/app.js'])
     </head>
         <body class="bg-white text-noir">
-        <header class="flex items-center justify-around p-3 bg-noir text-white border-b-2 border-amber-400">
+        <header class="flex items-center justify-around p-3 bg-noir text-white border-b-2 border-gold">
             <img src="{{Vite::asset('resources/images/logo_01.svg')}}" alt="Logo du site" class="w-[10rem]">
         <nav class="flex gap-4">
             <a href="{{route('index')}}" class="p-1 hover:border hover:border-gold hover:rounded-lg">Accueil</a>
@@ -31,8 +31,10 @@
             @yield("content")
         </main>
 
-        <footer  class="bg-noir text-white flex justify-center">
-            IUT de Lens - Groupe 1 - Les indécis.
+        <footer class="bg-noir text-white flex justify-center border-t-2 border-gold p-2 h-auto">
+                <div class="flex justify-center p-2">
+                <p class="text-center">© {{date("Y")}} - Tous droits réservés - Les indécis</p>
+                </div>
         </footer>
         </body>
 </html>
