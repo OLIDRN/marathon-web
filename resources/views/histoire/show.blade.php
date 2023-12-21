@@ -16,7 +16,7 @@
     </div>
 
         @if($histoire->id == 2)
-            <img src="{{ $histoire->photo }}" alt="Image description">
+            <img class="sm:w-full" src="{{ $histoire->photo }}" alt="Image description">
         @elseif($histoire->id == 100)
             <img src="{{ Vite::asset('/public' . $histoire->photo) }}" alt="image de l'histoire">
         @else
