@@ -28,7 +28,7 @@
                         <hr class="border m-4 border-gold">
                         <p>Vous etes l'auteur de {{ $user->mesHistoires->count() }} histoires</p>
                             @foreach($user->mesHistoires as $histoire)
-                                <a href="{{ route('histoire.show', $histoire->id) }}">
+                                <a class="underline" href="{{ route('histoire.show', $histoire->id) }}">
                                     <li>
                                     {{ $histoire->titre }}
                                     </li>
