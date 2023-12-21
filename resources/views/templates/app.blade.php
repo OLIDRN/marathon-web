@@ -4,34 +4,34 @@
         <meta charset="UTF-8">
         <title>{{isset($title) ? $title : "Page en cours"}}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <script defer src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
         @vite(["resources/css/normalize.css", 'resources/css/app.css', 'resources/js/app.js'])
     </head>
         <body class="bg-white text-noir">
-        <header class="flex items-center justify-around p-3 bg-stone-800 text-white border-b-2 border-amber-400">
-            <img src="{{Vite::asset('/resources/images/logo_01.svg')}}" alt="Logo du site" class="w-[10rem]">
+        <header class="flex items-center justify-around p-3 bg-noir text-white border-b-2 border-amber-400">
+            <img src="{{Vite::asset('resources/images/logo_01.svg')}}" alt="Logo du site" class="w-[10rem]">
         <nav class="flex gap-4">
-            <a href="{{route('index')}}" class="hover:text-zinc-300">Accueil</a>
-            <a href="{{route('histoire.index')}}" class="hover:text-zinc-300">Histoires</a>
+            <a href="{{route('index')}}" class="p-1 hover:border hover:border-gold hover:rounded-lg">Accueil</a>
+            <a href="{{route('histoire.index')}}" class="p-1 hover:border hover:border-gold hover:rounded-lg">Histoires</a>
         @auth
-                <a href="{{ route('dashboard') }}" class="hover:text-zinc-300">{{Auth::user()->name}}</a>
-                <a href="{{route("logout")}}" class="hover:text-zinc-300"
+                <a href="{{ route('dashboard') }}" class="p-1 hover:border hover:border-gold hover:rounded-lg">{{Auth::user()->name}}</a>
+                <a href="{{route("logout")}}" class="p-1 hover:border hover:border-gold hover:rounded-lg"
                 onclick="document.getElementById('logout').submit(); return false;">Logout</a>
                 <form id="logout" action="{{route("logout")}}" method="post">
                     @csrf
                 </form>
             @else
-                <a href="{{route("login")}}" class="hover:text-zinc-300">Login</a>
-                <a href="{{route("register")}}" class="hover:text-zinc-300">Register</a>
+                <a href="{{route("login")}}" class="p-1 hover:border hover:border-gold hover:rounded-lg">Login</a>
+                <a href="{{route("register")}}" class="p-1 hover:border hover:border-gold hover:rounded-lg">Register</a>
             @endauth
         </nav>
     </header>
 
-        <main class="bg-stone-800 text-white">
+        <main class="bg-noir text-white">
             @yield("content")
         </main>
 
-        <footer  class="bg-stone-800 text-white flex justify-center">
+        <footer  class="bg-noir text-white flex justify-center">
             IUT de Lens - Groupe 1 - Les indécis.
         </footer>
         </body>

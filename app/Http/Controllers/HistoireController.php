@@ -98,7 +98,7 @@ class HistoireController extends Controller
 
         $histoire->save();
 
-        return redirect()->route('histoire.show', ['id' => $histoire->id]);
+        return redirect()->route('encours.create', ['id' => $histoire->id]);
     }
 
     public function edit(Request $request, $id)
@@ -140,5 +140,22 @@ class HistoireController extends Controller
             return redirect()->route('login');
         }
         return view('dashboard', ['user' => $user, 'histoires' => $histoires]);
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        $user = auth()->user();
+
+        if($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $path = $avatar->getRealPath();
+            $data = file_get_contents($path);
+            $base64 = 'data:photos/' . $avatar->getClientOriginalExtension() . ';base64,' . base64_encode($data);
+
+            $user->avatar = $base64;
+            $user->save();
+        }
+
+        return redirect()->route('dashboard');
     }
 }
