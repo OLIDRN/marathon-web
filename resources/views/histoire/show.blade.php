@@ -7,7 +7,7 @@
         <h2 class="text-xl text-justify max-w-sm">{{ $histoire->pitch }}</h2>
         <p class="text-lg">Genre : {{ $histoire->genre->label }}</p>
         <p>Auteur :
-            <a class="underline" href="{{ route('user.dashboard.blade.php', $histoire->user->name) }}">
+            <a class="underline" href="{{ route('user.dashboard', $histoire->user->name) }}">
                 {{ $histoire->user->name }}
             </a></p>
 
@@ -31,20 +31,23 @@
         @endif
 
         <a href="{{route('histoire.starthistory', $histoire->id)}}"><p>Commencer la lecture</p></a>
+        
+        <form class="flex flex-col gap-2" method="POST" action="{{ route('histoire.avis', $histoire->id) }}">
+            @csrf
+            <label class="underline py-2" for="contenu">Ajouter un commentaire :</label>
+            <textarea class="max-w-md" rows="3" id="contenu" name="contenu" required></textarea>
+            <button class="flex p-2 border border-gold w-max hover:bg-gold" type="submit">Soumettre</button>
+        </form>
 
         @foreach($histoire->avis as $avis)
-            <div>
-                <p>Auteur : {{ $avis->user->name }}</p>
-                <p>Commentaire : {{ $avis->contenu }}</p>
+            <div class="flex flex-col  rounded p-1">
+                    <a class="underline border-b border-gold p-1" href="{{ route('user.dashboard', $avis->user->name) }}">
+                        {{ $avis->user->name }}
+                    </a>
+                <p>{{ $avis->contenu }}</p>
             </div>
         @endforeach
 
-        <form method="POST" action="{{ route('histoire.avis', $histoire->id) }}">
-            @csrf
-            <label for="contenu">Ajouter un commentaire :</label>
-            <textarea id="contenu" name="contenu" required></textarea>
-            <button type="submit">Soumettre</button>
-        </form>
     </div>
 
 

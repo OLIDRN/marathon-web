@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         noir: "#0E0E0E",
         white: "#F6F6F6",
+        gold: "#CBA135",
     },
   },
   },

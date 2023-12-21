@@ -35,7 +35,7 @@ class HistoireController extends Controller
         if (!$user) {
             abort(404, 'User not found');
         }
-        return view('user.dashboard.blade.php', ['user' => $user]);
+        return view('user.dashboard', ['user' => $user]);
     }
 
     public function create()

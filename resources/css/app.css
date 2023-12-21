@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 ::selection {
-    background: rgb(248, 219, 28);
+    background: theme('colors.gold');
     color: #fff;
 }
 
@@ -16,7 +16,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(248, 219, 28);
+    background: theme('colors.gold');
     border-radius: 10px;
 }
 
