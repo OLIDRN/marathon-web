@@ -70,6 +70,8 @@
 
             <button class="border-2 rounded bg-stone-600 focus:outline-none border-gold w-max p-2 m-auto hover:bg-gold" type="submit" class="btn btn-primary">Lier les chapitres</button>
 
+            <a class="border-2 rounded bg-stone-600 focus:outline-none border-gold w-max p-2 m-auto hover:bg-gold" href="{{ route('histoire.show', $histoire->id) }}">Tester l'histoire</a>
+
             <hr class="border m-4 border-gold">
 
             <div class="flex flex-col gap-4 p-4 w-72">
