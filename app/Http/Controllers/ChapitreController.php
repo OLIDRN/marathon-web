@@ -15,10 +15,8 @@ class ChapitreController extends Controller
     public function store(Request $request)
     {
             $request->validate([
-                'titre' => 'required',
                 'titrecourt' => 'required',
                 'texte' => 'required',
-                'question' => 'required',
             ]);
 
         $user = auth()->user();
