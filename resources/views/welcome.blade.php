@@ -22,6 +22,7 @@
         <div class="flex flex-col justify-center p-6 gap-4">
             <h1 class="text-3xl font-bold text-center m-auto flex gap-2">L'avis de nos utilisateurs :</h1>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/XHsFTStq6sc?si=6EPcaBZesDG9JJhu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p class="text-center text-xs underline">Ca mérite un 20, non ?</p>
         </div>
     </div>
 @endsection
