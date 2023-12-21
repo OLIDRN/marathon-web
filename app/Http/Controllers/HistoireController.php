@@ -170,9 +170,4 @@ class HistoireController extends Controller
         return view('histoire.showChapitre', ['histoire' => $histoire, 'chapitre' => $chapitre]);
     }
 
-    public function carousel()
-    {
-        $histoires = Histoire::all();
-        return view('carousel', ['histoires' => $histoires]);
-    }
 }
