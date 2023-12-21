@@ -67,7 +67,8 @@ class HistoireController extends Controller
     public function starthistory(Request $request, $id)
     {
         $histoire = Histoire::find($id);
-        return view('histoire.starthistory', ['histoire' => $histoire]);
+        $chapitre = $histoire->chapitres()->first();
+        return view('histoire.starthistory', ['histoire' => $histoire, 'chapitre' => $chapitre]);
     }
 
     public function store(Request $request)
@@ -157,5 +158,15 @@ class HistoireController extends Controller
         }
 
         return redirect()->route('dashboard');
+    }
+
+    public function showChapitre($histoire_id, $chapitre_id)
+    {
+        $histoire = Histoire::find($histoire_id);
+        $chapitre = $histoire->chapitres()->find($chapitre_id);
+        if (!$chapitre) {
+            abort(404, 'Chapter not found');
+        }
+        return view('histoire.showChapitre', ['histoire' => $histoire, 'chapitre' => $chapitre]);
     }
 }

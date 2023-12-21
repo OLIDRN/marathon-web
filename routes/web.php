@@ -48,3 +48,5 @@ Route::get('/encours/{id}/create', [ChapitreController::class, 'create'])->name(
 Route::post('/encours/{id}', [ChapitreController::class, 'store'])->name('encours.store');
 // Dans routes/web.php
 Route::post('/chapitres/order/{id}', [ChapitreController::class, 'order'])->name('chapitres.order');
+
+Route::get('/histoire/{histoire}/chapitre/{chapitre}', [App\Http\Controllers\HistoireController::class, 'showChapitre'])->name('histoire.showChapitre');
