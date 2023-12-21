@@ -1,7 +1,7 @@
 @extends("templates.app")
 
 @section('content')
-    <div class="flex flex-col justify-center gap-10 p-6 max-w-2xl">
+    <div class="flex flex-col justify-center gap-10 p-6 max-w-2xl mb-16">
         <a class="before:content-['←'] underline" href="{{ route('histoire.index') }}" class="text-2xl underline">Retour</a>
         <h1 class="text-3xl underline text-center">{{ $histoire->titre }}</h1>
         <h2 class="text-xl text-justify max-w-sm m-auto">{{ $histoire->pitch }}</h2>
@@ -16,7 +16,7 @@
     </div>
 
         @if($histoire->id == 2)
-            <img src="{{ $histoire->photo }}" alt="Image description">
+            <img class="sm:w-full" src="{{ $histoire->photo }}" alt="Image description">
         @elseif($histoire->id == 100)
             <img src="{{ Vite::asset('/public' . $histoire->photo) }}" alt="image de l'histoire">
         @else

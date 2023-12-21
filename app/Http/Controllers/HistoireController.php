@@ -169,4 +169,5 @@ class HistoireController extends Controller
         }
         return view('histoire.showChapitre', ['histoire' => $histoire, 'chapitre' => $chapitre]);
     }
+
 }

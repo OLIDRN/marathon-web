@@ -18,7 +18,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
         @foreach($histoire as $story)
             @if($story->active === 1)
-                <div class="flex flex-col justify-center max-w-md gap-4 p-6 rounded-lg border-2 border-gold shadow-2xl shadow-amber-700 hover:scale-105 transition-all">
+                <div class="flex flex-col justify-center max-w-md gap-4 p-6 rounded-lg border-2 border-gold shadow-2xl shadow-amber-700 hover:scale-105 transition-all mb-16">
                     <h3 class="text-xl font-bold">{{ $story->titre }}</h3>
                     @if($story->id == 2)
                         <img class="aspect-square object-cover w-full" src="{{ $story->photo }}" alt="Image description">
