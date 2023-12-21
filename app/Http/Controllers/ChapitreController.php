@@ -19,7 +19,6 @@ class ChapitreController extends Controller
                 'titrecourt' => 'required',
                 'texte' => 'required',
                 'question' => 'required',
-                'premier' => 'required|boolean',
             ]);
 
         $user = auth()->user();
@@ -33,9 +32,10 @@ class ChapitreController extends Controller
         $chapitre->texte = $request->texte;
         $chapitre->question = $request->question;
         $chapitre->histoire_id = 40;
-        $chapitre->premier =false;
         if ($request->premier == 1) {
             $chapitre->premier =true;
+        }else {
+            $chapitre->premier = false;
         }
 
         $chapitre->save();
