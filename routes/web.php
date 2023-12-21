@@ -30,6 +30,8 @@ Route::get('/test-vite', function () {
 
 Route::get('equipe', [EquipeController::class, 'index'])->name("equipe");
 
+Route::get('index', [HistoireController::class, 'carousel'])->name("index");
+
 Route::get('histoire/{id}', [HistoireController::class, 'show'])->name("histoire.show");
 Route::get('histoires/create', [HistoireController::class, 'create'])->name("histoire.create");
 Route::post('histoires', [HistoireController::class, 'store'])->name("histoire.store");
