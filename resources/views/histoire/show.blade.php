@@ -32,13 +32,12 @@
                     @method('DELETE')
                     <button class="border-2 rounded bg-noir focus:outline-none border-gold w-max p-2 m-auto hover:bg-gold" type="submit">Supprimer</button>
                 </form>
-                <a class="border-2 rounded bg-noir focus:outline-none border-gold w-max p-2 m-auto hover:bg-gold" href="{{ route('histoire.encours', $histoire->id) }}">Créer un chapitre</a>
                 </div>
             @endif
         @endif
 
         <a class="border-2 rounded focus:outline-none border-gold w-max p-2 m-auto hover:bg-gold" href="{{route('histoire.starthistory', $histoire->id)}}"><p>Commencer la lecture</p></a>
-        
+
         <hr class="border-2 border-gold">
 
         <form class="flex flex-col gap-2 justify-center m-auto" method="POST" action="{{ route('histoire.avis', $histoire->id) }}">
