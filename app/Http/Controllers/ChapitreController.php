@@ -39,7 +39,6 @@ class ChapitreController extends Controller
         return redirect()->route('encours.create', ['id' => $id]);
     }
 
-    // Dans ChapitreController.php
     public function order(Request $request, $id)
     {
         $histoire = Histoire::find($id);
