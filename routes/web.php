@@ -42,3 +42,4 @@ Route::get('histoires/{id}/edit', [HistoireController::class, 'edit'])->name("hi
 Route::put('histoires/{id}', [HistoireController::class, 'update'])->name("histoire.update");
 Route::delete('histoires/{id}', [HistoireController::class, 'destroy'])->name("histoire.destroy");
 Route::get('dashboard', [HistoireController::class, 'dashboardUser'])->name("dashboard");
+Route::post('/user/avatar', [HistoireController::class, 'updateAvatar'])->name('user.updateAvatar');

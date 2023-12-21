@@ -141,4 +141,21 @@ class HistoireController extends Controller
         }
         return view('dashboard', ['user' => $user, 'histoires' => $histoires]);
     }
+
+    public function updateAvatar(Request $request)
+    {
+        $user = auth()->user();
+
+        if($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $path = $avatar->getRealPath();
+            $data = file_get_contents($path);
+            $base64 = 'data:photos/' . $avatar->getClientOriginalExtension() . ';base64,' . base64_encode($data);
+
+            $user->avatar = $base64;
+            $user->save();
+        }
+
+        return redirect()->route('dashboard');
+    }
 }
