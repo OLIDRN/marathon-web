@@ -24,7 +24,7 @@
                     @elseif($story->id == 100)
                         <img src="{{ Vite::asset('/public' . $story->photo) }}" alt="image de l'histoire">
                     @else
-                        <img src="{{ Vite::asset('/public/storage/' . $story->photo) }}" alt="image de lqdqd'histoire">
+                        <img src="{{ Vite::asset('/public/storage' . $story->photo) }}" alt="image de lqdqd'histoire">
                     @endif
                     <h4 class="text-sm">Auteur :
                         <a class="underline text-stone-400 italic" href="{{ route('user.dashboard.blade.php', $story->user->name) }}">
