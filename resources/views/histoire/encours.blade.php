@@ -1,6 +1,3 @@
-<!-- donne moi un code afin de pouvoir creer les chapitres d'une histoire avec un titre, un titre court, un media, une question, un bouton pour choisir si c'est le premier chapitre et une zone de texte afin de noter le chapitre et un bouton pour valider le chapitre -->
-<!-- resources/views/chapitre/create.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
