@@ -32,6 +32,7 @@
                     @method('DELETE')
                     <button class="border-2 rounded bg-noir focus:outline-none border-gold w-max p-2 m-auto hover:bg-gold" type="submit">Supprimer</button>
                 </form>
+                <a class="border-2 rounded bg-noir focus:outline-none border-gold w-max p-2 m-auto hover:bg-gold" href="{{ route('histoire.encours', $histoire->id) }}">Créer un chapitre</a>
                 </div>
             @endif
         @endif

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\EquipeController;
 use \App\Http\Controllers\HistoireController;
+use \App\Http\Controllers\ChapitreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,7 @@ Route::put('histoires/{id}', [HistoireController::class, 'update'])->name("histo
 Route::delete('histoires/{id}', [HistoireController::class, 'destroy'])->name("histoire.destroy");
 Route::get('dashboard', [HistoireController::class, 'dashboardUser'])->name("dashboard");
 Route::post('/user/avatar', [HistoireController::class, 'updateAvatar'])->name('user.updateAvatar');
+Route::get('/encours/{id}/create', [ChapitreController::class, 'create'])->name('encours.create');
+Route::post('/encours/{id}', [ChapitreController::class, 'store'])->name('encours.store');
+// Dans routes/web.php
+Route::post('/chapitres/order/{id}', [ChapitreController::class, 'order'])->name('chapitres.order');

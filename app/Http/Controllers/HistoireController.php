@@ -98,7 +98,7 @@ class HistoireController extends Controller
 
         $histoire->save();
 
-        return redirect()->route('histoire.show', ['id' => $histoire->id]);
+        return redirect()->route('encours.create', ['id' => $histoire->id]);
     }
 
     public function edit(Request $request, $id)
